@@ -1,0 +1,486 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Counter Strike: Global Offensive Quiz</title>
+<style>
+*
+{
+  box-sizing: border-box;
+}
+body
+{
+	padding: 0;
+	margin: 0;
+	font-family: Helvetica, sans-serif;
+	background: url("background.jpg");
+	background-size: cover;
+	background-position: 50% 30%;
+	background-repeat: no-repeat;
+}
+.container
+{
+	width: 80%;
+	margin: 0 auto;
+}
+.row
+{
+	width: 100%;
+	margin: 10px auto;
+	display: inline-block;
+	margin: 50px 0;
+}
+.content
+{
+	background: rgba(255,255,255,0.5);
+	padding: 20px 0 40px 0;
+	height: 600px;
+}
+.header
+{
+	width: 50%;
+	margin: 50px auto 20px;
+}
+.header h1
+{
+	text-align: center;
+}
+#description
+{
+	width: 60%;
+	margin: 0 auto;
+}
+#questionarea
+{
+	display: none;
+}
+.startquiz
+{
+	background: #fff;
+	color: #000;
+	font-size: 24px;
+	cursor: pointer;
+	border: none;
+	padding: 5px 10px;
+}
+.startquiz:hover
+{
+	background: #efefef;
+}
+.questions
+{
+	text-align: center;
+	display: none;
+}
+#question
+{
+	font-size: 24px;
+	text-align: center;
+	margin: 10px 0;
+}
+#options
+{
+	width: 20%;
+	margin: 0 auto;
+	text-align: left;
+}
+input[type="radio"]
+{
+    width: 100px;
+	margin: 10px 0;
+}
+.choices
+{
+	width: 50%;
+	margin: 5px auto;
+	font-size: 20px;
+	padding: 5px 10px;
+	background: #efefef;
+	cursor: pointer;
+}
+.choices:hover
+{
+	background: #999;
+	color: #fff;
+}
+.nextBtn
+{
+	display: none;
+	background: #000;
+	color: #fff;
+	padding: 5px 10px;
+	font-size: 20px;
+	cursor: pointer;
+	border: none;
+	margin: 10px 0;
+	font-weight: bold;
+}
+.playAgainBtn, .showScoreboardBtn
+{
+	background: #000;
+	color: #fff;
+	padding: 5px 10px;
+	font-size: 20px;
+	cursor: pointer;
+	border: none;
+	margin: 10px 0;
+	font-weight: bold;
+}
+#error
+{
+	display: none;
+	text-align: center;
+	color: #f00;
+}
+#win, #lose, #showscoreboard
+{
+	display: none;
+	text-align: center;
+}
+#win h1, #lose h1
+{
+	margin: 10px 0;
+}
+.selected
+{
+	background: #000;
+	color: #fff;
+}
+.correct
+{
+	background: #0f0;
+	color: #fff;
+}
+.homemusicprevnext
+{
+	width: 50%;
+	margin: 20px auto;
+	text-align: center;
+}
+.homemusicprevnext img
+{
+	cursor: pointer;
+	vertical-align: bottom;
+	margin: 0 5px;
+}
+.prevnextBtn
+{
+	background: #1C6095;
+	color: #fff;
+	font-weight: bold;
+	font-size: 24px;
+	padding: 10px 20px;
+	cursor: pointer;
+	border: none;
+}
+#showscoreboard
+{
+	width: 50%;
+	margin: 0 auto;
+}
+table, td, th
+{
+	border: 1px solid black;
+	padding: 5px;
+}
+#scoreboarddata
+{
+	border-collapse: collapse;
+}
+#playAgain
+{
+	display: none;
+	width: 50%;
+	margin: 0 auto;
+	text-align: center;
+}
+</style>
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="content">
+				<div class="header">
+					<h1>Counter Strike: Global Offensive Quiz</h1>
+					<hr/>
+				</div>
+				<div id="description">
+					<p>Counter-Strike: Global Offensive is a multiplayer online first-person shooter. Counter-Strike: Global Offensive was developed by Valve Corporation and was released in 2012 on all major gaming platforms at the time. Counter-Strike: Global Offensive still maintains popularity to this day, with the game having an average player base of up to 900 thousand players daily on the online gaming platform Steam.</p>
+					<p>If you are a fan of Counter-Strike: Global Offensive. If you've always wanted to show your friends that you're the most knowledgeable and passionate about the game among them, try this quiz and prove it once and for all!</p>
+					<div style="text-align: center;">
+						<button id="startQuiz" class="startquiz">START QUIZ</button>
+					</div>
+				</div>
+				<div class="questionarea" id="questionarea">
+					<div class="questions" id="q1">
+						<div id="question">What’s it called when you kill 5 people on the enemy team within Counter-Strike: Global Offensive?</div>
+						<div id="options">
+							<input type="radio" name="answersq1" id="radioa1q1" value="5K" onclick="checkAns(1,this.id)"> 5K
+							<br/>
+							<input type="radio" name="answersq1" id="radioa2q1" value="Ace" onclick="checkAns(1,this.id)"> Ace
+							<br/>
+							<input type="radio" name="answersq1" id="radioa3q1" value="Penta Kill" onclick="checkAns(1,this.id)"> Penta Kill
+							<br/>
+							<input type="radio" name="answersq1" id="radioa4q1" value="Quinta Kill" onclick="checkAns(1,this.id)"> Quinta Kill
+							<br/>
+						</div>
+					</div>
+					<div class="questions" id="q2">
+						<div id="question">Who won the 2017 Counter-Strike: Global Offensive PGL Kraków Major?</div>
+						<div id="options">
+							<input type="radio" name="answersq2" id="radioa1q2" value="Gambit Gaming" onclick="checkAns(2,this.id)">
+							<label for="radioa1q2">Gambit Gaming</label><br/>
+							<input type="radio" name="answersq2" id="radioa2q2" value="Immortals" onclick="checkAns(2,this.id)">
+							<label for="radioa2q2">Immortals</label><br/>
+							<input type="radio" name="answersq2" id="radioa3q2" value="FaZe Clan" onclick="checkAns(2,this.id)">
+							<label for="radioa3q2">FaZe Clan</label><br/>
+							<input type="radio" name="answersq2" id="radioa4q2" value="Ninjas in Pyjamas" onclick="checkAns(2,this.id)">
+							<label for="radioa4q2">Ninjas in Pyjamas</label><br/>
+						</div>
+					</div>
+					<div class="questions" id="q3">
+						<div id="question">Which of these maps is the most popular map in CS:GO?</div>
+						<div id="options">
+							<input type="radio" name="answersq3" id="radioa1q3" value="Dust 2" onclick="checkAns(3,this.id)">
+							<label for="radioa1q3">Dust 2</label><br/>
+							<input type="radio" name="answersq3" id="radioa2q3" value="Mirage" onclick="checkAns(3,this.id)">
+							<label for="radioa2q3">Mirage</label><br/>
+							<input type="radio" name="answersq3" id="radioa3q3" value="Overpass" onclick="checkAns(3,this.id)">
+							<label for="radioa3q3">Overpass</label><br/>
+							<input type="radio" name="answersq3" id="radioa4q3" value="Inferno" onclick="checkAns(3,this.id)">
+							<label for="radioa4q3">Inferno</label><br/>
+						</div>
+					</div>
+					<div class="questions" id="q4">
+						<div id="question">How long does the C4 take to detonate in CS:GO competitive?</div>
+						<div id="options">
+							<input type="radio" name="answersq4" id="radioa1q4" value="50 Seconds" onclick="checkAns(4,this.id)">
+							<label for="radioa1q4">50 Seconds</label><br/>
+							<input type="radio" name="answersq4" id="radioa2q4" value="40 Seconds" onclick="checkAns(4,this.id)">
+							<label for="radioa2q4">40 Seconds</label><br/>
+							<input type="radio" name="answersq4" id="radioa3q4" value="30 Seconds" onclick="checkAns(4,this.id)">
+							<label for="radioa3q4">30 Seconds</label><br/>
+							<input type="radio" name="answersq4" id="radioa4q4" value="20 Seconds" onclick="checkAns(4,this.id)">
+							<label for="radioa4q4">20 Seconds</label><br/>
+						</div>
+					</div>
+					<div class="questions" id="q5">
+						<div id="question">What's the highest competitive rank in CS:GO?</div>
+						<div id="options">
+							<input type="radio" name="answersq5" id="radioa1q5" value="Silver" onclick="checkAns(5,this.id)">
+							<label for="radioa1q5">Silver</label><br/>
+							<input type="radio" name="answersq5" id="radioa2q5" value="Gold Nova" onclick="checkAns(5,this.id)">
+							<label for="radioa2q5">Gold Nova</label><br/>
+							<input type="radio" name="answersq5" id="radioa3q5" value="Legendary Eagle" onclick="checkAns(5,this.id)">
+							<label for="radioa3q5">Legendary Eagle</label><br/>
+							<input type="radio" name="answersq5" id="radioa4q5" value="Global Elite" onclick="checkAns(5,this.id)">
+							<label for="radioa4q5">Global Elite</label><br/>
+						</div>
+					</div>
+					<div class="questions" id="q6">
+						<div id="question">Which CS:GO pro player was VAC banned and performed the jump shot on A site on Dust 2?</div>
+						<div id="options">
+							<input type="radio" name="answersq6" id="radioa1q6" value="S1mple" onclick="checkAns(6,this.id)">
+							<label for="radioa1q6">S1mple</label><br/>
+							<input type="radio" name="answersq6" id="radioa2q6" value="KQLY" onclick="checkAns(6,this.id)">
+							<label for="radioa2q6">KQLY</label><br/>
+							<input type="radio" name="answersq6" id="radioa3q6" value="NiKo" onclick="checkAns(6,this.id)">
+							<label for="radioa3q6">NiKo</label><br/>
+							<input type="radio" name="answersq6" id="radioa4q6" value="KennyS" onclick="checkAns(6,this.id)">
+							<label for="radioa4q6">KennyS</label><br/>
+						</div>
+					</div>
+					<div class="homemusicprevnext" id="homemusicprevnext">
+						<span class="homeicon"><img id="homeicon" src="home.png" width="50" /></span>
+						<button id="previousQuestion" class="prevnextBtn">Previous Question</button>
+						<button id="nextQuestion" class="prevnextBtn">Next Question</button>
+						<span class="musiconoff"><img id="musiconoff" src="musicon.png" width="50" /></span>
+					</div>
+					<audio id="counterStrikeAudio" loop></audio>
+					<div id="error"><h3>Please select any answer</h3></div>
+					<div id="showscoreboard"><button class="showScoreboardBtn" id="showScoreboardBtn">SHOW SCOREBOARD</button></div>
+					<div id="playAgain"><button class="playAgainBtn" id="playAgainBtn" onClick="window.location.reload(true)">PLAY AGAIN</button></div>
+					<div id="lose"><h1>YOU LOSE</h1><button class="playAgainBtn" onClick="window.location.reload(true)">PLAY AGAIN</button></div>					
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+	let totalQuestion = 0;
+	let radioAnswer;
+	let sound = "unmute";
+	let selectedAnswer = [];
+	let allSelectedAnswer = [];
+	let currentQuestion = 0;
+	let totalScore = 0;
+	currentQuestion++;
+	let cs = document.getElementById("counterStrikeAudio");
+	document.getElementById("q"+currentQuestion).style.display = "block";
+	let allCorrectAnswers = ["Ace","Gambit Gaming","Dust 2","40 Seconds","Global Elite","KQLY"];
+	document.getElementById("startQuiz").addEventListener("click", function() {
+		document.getElementById("description").style.display = "none";
+		document.getElementById("questionarea").style.display = "block";
+		document.getElementById("q"+currentQuestion).style.display = "block";
+		document.getElementById("homemusicprevnext").style.display = "block";
+		cs.src = "CounterStrike.mp3";
+		cs.play();
+		radioAnswer = document.querySelectorAll("input[name='answersq"+currentQuestion+"']:checked");		
+		if(currentQuestion == 1 && radioAnswer.length > 0)
+		{
+			document.getElementById("previousQuestion").disabled = true;
+			document.getElementById("previousQuestion").style.cursor = "default";
+			document.getElementById("nextQuestion").disabled = false;			
+			document.getElementById("nextQuestion").style.cursor = "pointer";
+		}
+		else
+		{
+			document.getElementById("previousQuestion").disabled = true;
+			document.getElementById("previousQuestion").style.cursor = "default";
+			document.getElementById("nextQuestion").disabled = true;			
+			document.getElementById("nextQuestion").style.cursor = "default";
+		}
+	});
+	document.getElementById("previousQuestion").addEventListener("click", function() {
+		document.getElementById("q"+currentQuestion).style.display = "none";
+		currentQuestion--;
+		document.getElementById("q"+currentQuestion).style.display = "block";
+		radioAnswer = document.querySelectorAll("input[name='answersq"+currentQuestion+"']:checked");
+		if(radioAnswer.length > 0)
+		{
+			if(currentQuestion == 1)
+			{
+				document.getElementById("previousQuestion").disabled = true;
+				document.getElementById("previousQuestion").style.cursor = "default";
+				document.getElementById("nextQuestion").disabled = false;
+				document.getElementById("nextQuestion").style.cursor = "pointer";
+			}
+			else if(currentQuestion == 5)
+			{
+				document.getElementById("showscoreboard").style.display = "none";
+				document.getElementById("previousQuestion").disabled = false;
+				document.getElementById("previousQuestion").style.cursor = "pointer";
+				document.getElementById("nextQuestion").disabled = false;
+				document.getElementById("nextQuestion").style.cursor = "pointer";
+			}
+			else
+			{
+				document.getElementById("previousQuestion").disabled = false;
+				document.getElementById("previousQuestion").style.cursor = "pointer";
+				document.getElementById("nextQuestion").disabled = false;
+				document.getElementById("nextQuestion").style.cursor = "pointer";
+			}
+		}
+	});
+	document.getElementById("nextQuestion").addEventListener("click", function() {
+		document.getElementById("q"+currentQuestion).style.display = "none";
+		currentQuestion++;
+		document.getElementById("q"+currentQuestion).style.display = "block";
+		radioAnswer = document.querySelectorAll("input[name='answersq"+currentQuestion+"']:checked");
+		if(radioAnswer.length > 0 && currentQuestion > 1 && currentQuestion < 6)
+		{
+			document.getElementById("previousQuestion").disabled = false;
+			document.getElementById("previousQuestion").style.cursor = "pointer";
+			document.getElementById("nextQuestion").disabled = false;
+			document.getElementById("nextQuestion").style.cursor = "pointer";
+		}
+		else if(radioAnswer.length > 0 && currentQuestion == 6)
+		{
+			document.getElementById("previousQuestion").disabled = false;
+			document.getElementById("previousQuestion").style.cursor = "pointer";
+			document.getElementById("nextQuestion").disabled = true;
+			document.getElementById("nextQuestion").style.cursor = "default";
+			document.getElementById("showscoreboard").style.display = "block";
+		}
+		else
+		{
+			document.getElementById("previousQuestion").disabled = false;
+			document.getElementById("previousQuestion").style.cursor = "pointer";
+			document.getElementById("nextQuestion").disabled = true;
+			document.getElementById("nextQuestion").style.cursor = "default";
+		}
+	});
+	
+	function checkAns(q,qid)
+	{
+		radioAnswer = document.querySelectorAll("input[name='answersq"+q+"']:checked");
+		if(radioAnswer.length > 0 && currentQuestion == 6)
+		{
+			document.getElementById("nextQuestion").disabled = false;
+			document.getElementById("nextQuestion").style.cursor = "pointer";
+		}
+		if(currentQuestion < 6)
+		{
+			document.getElementById("nextQuestion").disabled = false;
+			document.getElementById("nextQuestion").style.cursor = "pointer";
+		}
+		else if(currentQuestion == 6)
+		{
+			document.getElementById("nextQuestion").disabled = true;
+			document.getElementById("nextQuestion").style.cursor = "default";
+			document.getElementById("showscoreboard").style.display = "block";
+		}
+	}
+	function youWin()
+	{
+		document.getElementById("win").style.display = "block";
+	}
+	window.addEventListener('load', function() {
+		radioAnswer = document.querySelectorAll("input[name='answersq"+currentQuestion+"']:checked");
+		if(radioAnswer.length > 0)
+		{
+			document.getElementById("nextQuestion").disabled = false;
+			document.getElementById("nextQuestion").style.cursor = "pointer";
+		}
+	});
+	document.getElementById("musiconoff").addEventListener("click", function() {
+		if(sound == "unmute")
+		{
+			sound = "mute";		
+			cs.muted = true;
+			cs.pause();
+			cs.currentTime = 0;
+			document.getElementById("musiconoff").setAttribute("src","musicoff.png");
+		}
+		else
+		{
+			sound = "unmute";
+			cs.muted = false;
+			cs.play();
+			document.getElementById("musiconoff").setAttribute("src","musicon.png");
+		}
+	});
+	document.getElementById("homeicon").addEventListener("click", function() {
+		document.getElementById("q"+currentQuestion).style.display = "none";
+		document.getElementById("homemusicprevnext").style.display = "none";
+		document.getElementById("description").style.display = "block";
+		document.getElementById("showscoreboard").style.display = "none";
+		currentQuestion = 1;
+	});
+	document.getElementById("showScoreboardBtn").addEventListener("click", function() {
+		document.getElementById("q"+currentQuestion).style.display = "none";
+		document.getElementById("homemusicprevnext").style.display = "none";
+		let scoredata = "<table id='scoreboarddata' align='center'>";
+		scoredata += "<tr><th>Question No</th><th>Your Given Answer</th><th>Correct Answer</th></tr>";
+		for(let i = 1; i <= 6; i++)
+		{
+			radioAnswer = document.querySelectorAll("input[name='answersq"+i+"']:checked");
+			for(let l = 0; l < radioAnswer.length; l++)
+			{
+				if(radioAnswer[l].value == allCorrectAnswers[i-1])
+				{
+					scoredata += "<tr><td>Question "+i+"</td><td>"+radioAnswer[l].value+"</td><td>"+radioAnswer[l].value+"</td></tr>";
+					totalScore++;
+				}
+				else
+				{
+					scoredata += "<tr><td>Question "+i+"</td><td>"+radioAnswer[l].value+"</td><td>"+allCorrectAnswers[i-1]+"</td></tr>";
+				}
+			}
+		}
+		scoredata += "</table><h2>Total Score : "+totalScore+"</h2>";
+		document.getElementById("showscoreboard").innerHTML = scoredata;
+		document.getElementById("playAgain").style.display = "block";
+	});
+	</script>
+</body>
+</html>
